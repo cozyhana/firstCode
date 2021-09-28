@@ -14,13 +14,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class FirstActivity extends AppCompatActivity {
+public class FirstActivity extends BaseActivity {
+
+
+    private static final String TAG = "FirstActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
-        Button button = (Button) findViewById(R.id.button);
+        Log.d(TAG, this.toString());
+        Button button = (Button) findViewById(R.id.button1_f);
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -50,6 +54,50 @@ public class FirstActivity extends AppCompatActivity {
 
             }
         });
+
+        Button button2  = (Button) findViewById(R.id.button2_f);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               SecondActivity.actionStart(FirstActivity.this,"data1","data2");
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart: ");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume: ");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause: ");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop: ");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy: ");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "onRestart: ");
     }
 
     @Override
